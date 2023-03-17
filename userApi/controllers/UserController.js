@@ -2,8 +2,14 @@ class UserController {
     async index(req,res) {}
 
     async create(req,res) {
-        console.log(req.body)
-        res.send("pegando corpo")
+        var {email,name,password} = req.body;
+
+        if(email || name == undefined) {
+            res.status(400);
+            res.json({erro: "Verifique os campos email e nome!"})
+        }
+
+        res.status(200);
     }
 }
 
