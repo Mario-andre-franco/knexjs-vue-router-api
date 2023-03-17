@@ -3,7 +3,6 @@ var bcrypt = require('bcrypt')
 
 class User {
 
-
     async findAll() {
         try {
             var result = await knex.select(["id","email","role","name"]).table("users")
@@ -31,7 +30,6 @@ class User {
     }
 
     async new(email,password,name) {
-
         try {
             var hash = await bcrypt.hash(password, 10);
             await knex.insert({email,password:hash,name,role:0}).table("users")
