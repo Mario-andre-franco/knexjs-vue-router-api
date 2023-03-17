@@ -1,3 +1,4 @@
+const knex = require("../database/connection")
 var User = require("../models/User")
 
 
@@ -52,6 +53,19 @@ class UserController {
             res.status(406).send("Ocorreu erro no servidor")
         }
     }
+
+    async remove(req,res) {
+        var id = req.params.id
+        
+        var result = await User.delete(id);
+
+        if(result.status) {
+            res.status(200).send("deletado")
+        } else {
+            res.status(406).send(result.err)
+        }
+    }
+    
 }
 
 module.exports = new UserController();
