@@ -1,5 +1,6 @@
 const knex = require("../database/connection")
 var User = require("../models/User")
+var PasswordToken = require("../models/PasswordToken")
 
 
 
@@ -61,6 +62,19 @@ class UserController {
 
         if(result.status) {
             res.status(200).send("deletado")
+        } else {
+            res.status(406).send(result.err)
+        }
+    }
+
+    async recoveryPassword(req,res) {
+        var email = req.body.email
+        var result = await PasswordToken.create(email)
+
+        if(result.status) {
+            res.status(200).send("token enviado")
+            console.log("token criado")
+
         } else {
             res.status(406).send(result.err)
         }
