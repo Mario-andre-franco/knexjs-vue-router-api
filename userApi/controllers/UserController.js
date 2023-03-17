@@ -22,7 +22,6 @@ class UserController {
 
     async create(req,res) {
         var {email,name,password} = req.body;
-
         if(email == undefined) {
             res.status(400);
             res.json({erro: "Verifique os campos email e nome!"})
@@ -30,7 +29,6 @@ class UserController {
         }
 
         var emailExist = await User.findEmail(email);
-        
         if(emailExist) {
             return res.status(406).json({error: "Usuário já cadastrado"})
         }
@@ -41,6 +39,7 @@ class UserController {
     async edit(req,res) {
         var {id,name,role,email} = req.body;
         var result = await User.update(id,email,name,role)
+        
         if(result != undefined) {
             if(result.status) {
                 res.status(200)
