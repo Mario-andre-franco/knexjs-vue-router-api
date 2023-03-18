@@ -110,11 +110,10 @@ class UserController {
 
         if(user != undefined) {
             var result = await bcrypt.compare(password,user.password)
-            res.json({status:result})
 
             if(result) {
                 var token = jwt.sign({ email:email, role: user.role }, secret);
-                res.status(200).json({token:token})
+                res.json({token:token})
             }
         } else {
             res.json({status:false})
