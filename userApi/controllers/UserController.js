@@ -1,6 +1,13 @@
 const knex = require("../database/connection")
 var User = require("../models/User")
 var PasswordToken = require("../models/PasswordToken")
+var bcrypt = require('bcrypt')
+var jwt = require("jsonwebtoken")
+var dotenv = require("dotenv")
+
+dotenv.config()
+
+var secret = process.env.SECRET
 
 
 
@@ -96,6 +103,23 @@ class UserController {
         }
     }
     
+    async login(req,res) {
+        var {email,password} = req.body;
+
+        var user = await User.findByEmail(email)
+
+        if(user != undefined) {
+            var result = await bcrypt.compare(password,user.password)
+            res.json({status:result})
+
+            if(result) {
+                var token = jwt.sign({ email:email, role: user.role }, secret);
+                res.status(200).json({token:token})
+            }
+        } else {
+            res.json({status:false})
+        }
+    }
 }
 
 module.exports = new UserController();
