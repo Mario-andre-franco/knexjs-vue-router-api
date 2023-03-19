@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import RegisterUser from "../views/RegisterUser.vue";
 import LoginUser from "../views/LoginUser.vue";
+import UsersAdmin from "../views/UsersAdmin.vue";
 
 const routes = [
   {
@@ -18,6 +19,18 @@ const routes = [
     path: "/login",
     name: "LoginUser",
     component: LoginUser,
+  },
+  {
+    path: "/admin/users",
+    name: "UsersAdmin",
+    component: UsersAdmin,
+    beforeEnter: (to, from, next) => {
+      if (localStorage.getItem("token") != undefined) {
+        next();
+      } else {
+        next("/login");
+      }
+    },
   },
   {
     path: "/about",

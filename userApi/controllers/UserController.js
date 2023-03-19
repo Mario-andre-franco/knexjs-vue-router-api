@@ -114,9 +114,13 @@ class UserController {
             if(result) {
                 var token = jwt.sign({ email:email, role: user.role }, secret);
                 res.json({token:token})
+            } else {
+                res.status(406)
+                res.json({error: "Senha incorreta"})
             }
         } else {
-            res.json({status:false})
+            res.status(406)
+            res.json({status: false, error: "Usuário não existe"})
         }
     }
 }
