@@ -31,7 +31,7 @@ class UserController {
 
     async create(req,res) {
         var {email,name,password} = req.body;
-        if(email == undefined) {
+        if(email == undefined || email == '' || email == ' ') {
             res.status(400);
             res.json({erro: "Verifique os campos email e nome!"})
             return
