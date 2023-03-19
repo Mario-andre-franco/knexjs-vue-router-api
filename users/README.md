@@ -1,24 +1,18 @@
-# users
+# Criação da Interface da Api
 
-## Project setup
-```
-npm install
-```
+Criando interface usando Vue.js com Bulma
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Referência
 
-### Compiles and minifies for production
-```
-npm run build
-```
+ - [VueJs](https://vuejs.org/)
+ - [Bulma](https://bulma.io/documentation/)
 
-### Lints and fixes files
-```
-npm run lint
-```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
+## Stack utilizada
+
+<p>
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=javascript,nodejs,vue,git,vscode&theme=light" />
+  </a>
+</p>
