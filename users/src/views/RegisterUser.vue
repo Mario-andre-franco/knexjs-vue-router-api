@@ -59,10 +59,10 @@ export default {
         })
         .then((res) => {
           console.log(res);
-          this.$router.push({ name: "Home" });
+          this.router.push({ name: "home" });
         })
         .catch((err) => {
-          var msgErro = err.response.data.err;
+          var msgErro = err.response.data.error;
           this.error = msgErro;
         });
     },

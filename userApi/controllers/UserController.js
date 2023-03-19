@@ -33,7 +33,7 @@ class UserController {
         var {email,name,password} = req.body;
         if(email == undefined || email == '' || email == ' ') {
             res.status(400);
-            res.json({erro: "Verifique os campos email e nome!"})
+            res.json({error: "Verifique os campos email e nome!"})
             return
         }
 
@@ -83,7 +83,7 @@ class UserController {
             console.log("token criado")
 
         } else {
-            res.status(406).send(result.err)
+            res.status(406).send(result.error)
         }
     }
 
