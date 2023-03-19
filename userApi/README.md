@@ -1,18 +1,19 @@
-# Criação da Interface da Api
+  # Criação de Api
 
-Criando interface usando Vue.js com Bulma
-
-## Referência
-
- - [VueJs](https://vuejs.org/)
- - [Bulma](https://bulma.io/documentation/)
+  Criando api com knex.js para manipulação e modelagem de banco de dados
 
 
+  ## Referência
 
-## Stack utilizada
+  - [KnexJs](https://knexjs.org/)
 
-<p>
-  <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=javascript,nodejs,vue,git,vscode&theme=light" />
-  </a>
-</p>
+
+
+  ## Stack utilizada
+
+  <p>
+    <a href="https://skillicons.dev">
+      <img src="https://skillicons.dev/icons?i=javascript,nodejs,git,postgres,postman,vscode&theme=light" />
+    </a>
+  </p>
+
