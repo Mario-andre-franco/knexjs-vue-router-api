@@ -5,7 +5,7 @@ class HomeController{
     }
 
     async validation(req,res) {
-        res.send('ok')
+        res.send({status: "ok"})
     }
 
 }

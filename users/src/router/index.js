@@ -3,6 +3,32 @@ import HomeView from "../views/HomeView.vue";
 import RegisterUser from "../views/RegisterUser.vue";
 import LoginUser from "../views/LoginUser.vue";
 import UsersAdmin from "../views/UsersAdmin.vue";
+import axios from "axios";
+
+function AdminAuth(to, from, next) {
+  if (localStorage.getItem("token") != undefined) {
+    var req = {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+    };
+
+    console.log(req);
+
+    axios
+      .post("http://localhost:8686/validate", {}, req)
+      .then((res) => {
+        console.log(res);
+        next();
+      })
+      .catch((err) => {
+        console.log(err);
+        next("/login");
+      });
+  } else {
+    next("/login");
+  }
+}
 
 const routes = [
   {
@@ -24,13 +50,7 @@ const routes = [
     path: "/admin/users",
     name: "UsersAdmin",
     component: UsersAdmin,
-    beforeEnter: (to, from, next) => {
-      if (localStorage.getItem("token") != undefined) {
-        next();
-      } else {
-        next("/login");
-      }
-    },
+    beforeEnter: AdminAuth,
   },
   {
     path: "/about",
