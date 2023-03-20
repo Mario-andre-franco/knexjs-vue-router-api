@@ -3,6 +3,7 @@ import HomeView from "../views/HomeView.vue";
 import RegisterUser from "../views/RegisterUser.vue";
 import LoginUser from "../views/LoginUser.vue";
 import UsersAdmin from "../views/UsersAdmin.vue";
+import EditUser from "../views/EditUser.vue";
 import axios from "axios";
 
 function AdminAuth(to, from, next) {
@@ -46,6 +47,12 @@ const routes = [
     path: "/admin/users",
     name: "UsersAdmin",
     component: UsersAdmin,
+    beforeEnter: AdminAuth,
+  },
+  {
+    path: "/admin/users/edit/:id",
+    name: "UserEdit",
+    component: EditUser,
     beforeEnter: AdminAuth,
   },
   {

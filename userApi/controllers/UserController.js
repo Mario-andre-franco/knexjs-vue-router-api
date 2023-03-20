@@ -70,7 +70,7 @@ class UserController {
         if(result.status) {
             res.status(200).send("deletado")
         } else {
-            res.status(406).send(result.err)
+            res.status(406).send(result.error)
         }
     }
 
