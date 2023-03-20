@@ -12,13 +12,9 @@ function AdminAuth(to, from, next) {
         Authorization: "Bearer " + localStorage.getItem("token"),
       },
     };
-
-    console.log(req);
-
     axios
       .post("http://localhost:8686/validate", {}, req)
-      .then((res) => {
-        console.log(res);
+      .then(() => {
         next();
       })
       .catch((err) => {
